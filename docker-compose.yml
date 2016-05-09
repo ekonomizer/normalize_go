@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  web_go:
+    build:
+      context: .
+      args:
+        REPO: github.com/ekonomizer/normalize_go
+        EXEC_FILE: /project/bin/normalize_go
+        PORT: 12345
+    ports:
+     - "8880:12345"

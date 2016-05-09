@@ -9,6 +9,7 @@ import (
 	"encoding/json"
 	"strings"
 	"strconv"
+
 )
 
 type Error struct {
@@ -68,6 +69,8 @@ func makeResponseStruct(params []string) Response {
 func checkRequestErrors(r *http.Request, w http.ResponseWriter) string{
 	r.ParseForm()
 	params := r.Form
+	fmt.Println("!!!!!", r.Form )
+	fmt.Println("!!!!!", r.PostForm )
 	var err string
 	if !tryAuth(r) {
 		err = "Can't authenticate!"
