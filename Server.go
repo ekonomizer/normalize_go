@@ -8,6 +8,7 @@ import (
 	"strings"
 	"strconv"
 
+	"runtime"
 )
 
 type Error struct {
@@ -114,6 +115,7 @@ func HandleRequest(queueClass func() handlers.HandlersQueue) http.HandlerFunc  {
 }
 
 func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	http.HandleFunc("/address/normalize", HandleRequest(handlers.NormalizeHandlersQueue))
 
 	err := http.ListenAndServe(":12345", nil) // setting listening port
