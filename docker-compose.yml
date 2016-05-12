@@ -6,14 +6,14 @@ services:
     container_name: web_go
     environment:
       - REPO=github.com/ekonomizer/normalize_go
-      - SERVER_EXEC=/project/bin/normalize_go
+      - SERVER_EXEC=/home/ekonomizer/gosrc/bin/normalize_go
       - PORT=12345
     ports:
-     - "8880:12345"
+      - "8880:12345"
     expose:
       - "12345"
       - "123"
-    entrypoint: /project/run_app
+    entrypoint: /home/ekonomizer/gosrc/run_app
     mem_limit: 100000000
     restart: always
 #

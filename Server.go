@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	Handlers "normalize_go/handlers"
+	"normalize_go/handlers"
 	//"flag"
 	//"io/ioutil"
 	"fmt"
@@ -108,7 +108,7 @@ func normalize(w http.ResponseWriter, r *http.Request) {
 	w.Write(resp)
 }
 
-func HandleRequest(queueClass func() Handlers.HandlersQueue) http.HandlerFunc  {
+func HandleRequest(queueClass func() handlers.HandlersQueue) http.HandlerFunc  {
 	return func(w http.ResponseWriter, r *http.Request) {
 		hq := queueClass()
 		hq.Run(w, r)
@@ -116,7 +116,7 @@ func HandleRequest(queueClass func() Handlers.HandlersQueue) http.HandlerFunc  {
 }
 
 func main() {
-	http.HandleFunc("/address/normalize", HandleRequest(Handlers.NormalizeHandlersQueue))
+	http.HandleFunc("/address/normalize", HandleRequest(handlers.NormalizeHandlersQueue))
 
 	err := http.ListenAndServe(":12345", nil) // setting listening port
 	if err != nil {
