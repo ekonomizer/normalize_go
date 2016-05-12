@@ -3,7 +3,6 @@ package main
 import (
 	"net/http"
 	"github.com/ekonomizer/normalize_go/handlers"
-	"github.com/ekonomizer/normalize_go/utils"
 	"fmt"
 	"runtime"
 )
