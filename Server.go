@@ -1,8 +1,8 @@
 package main
 
 import (
-
 	"net/http"
+	Handlers "normalize_go/handlers"
 	//"flag"
 	//"io/ioutil"
 	"fmt"
@@ -93,7 +93,7 @@ func normalize(w http.ResponseWriter, r *http.Request) {
 	var resp []byte
 
 	if paramsErr != "" {
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		resp, err = json.Marshal(Error{paramsErr})
 	} else {
 		respStruct := makeResponseStruct(r.Form["raw_address"])
@@ -101,15 +101,22 @@ func normalize(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err != nil {
-		w.WriteHeader(404)
+		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("Can't make json"))
 		return
 	}
 	w.Write(resp)
 }
 
+func HandleRequest(queueClass func() Handlers.HandlersQueue) http.HandlerFunc  {
+	return func(w http.ResponseWriter, r *http.Request) {
+		hq := queueClass()
+		hq.Run(w, r)
+	}
+}
+
 func main() {
-	http.HandleFunc("/address/normalize", normalize)
+	http.HandleFunc("/address/normalize", HandleRequest(Handlers.NormalizeHandlersQueue))
 
 	err := http.ListenAndServe(":12345", nil) // setting listening port
 	if err != nil {

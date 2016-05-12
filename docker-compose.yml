@@ -2,11 +2,22 @@ version: '2'
 
 services:
   web_go:
-    build:
-      context: .
-      args:
-        REPO: github.com/ekonomizer/normalize_go
-        EXEC_FILE: /project/bin/normalize_go
-        PORT: 12345
+    image: ekonomizer/golang
+    container_name: web_go
+    environment:
+      - REPO=github.com/ekonomizer/normalize_go
+      - SERVER_EXEC=/project/bin/normalize_go
+      - PORT=12345
     ports:
      - "8880:12345"
+    expose:
+      - "12345"
+      - "123"
+    entrypoint: /project/run_app
+    mem_limit: 100000000
+    restart: always
+#
+#    logging:
+#      driver: syslog
+#      options:
+#        syslog-address: "tcp://192.168.0.42:123"
