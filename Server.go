@@ -2,9 +2,7 @@ package main
 
 import (
 	"net/http"
-	"normalize_go/handlers"
-	//"flag"
-	//"io/ioutil"
+	"github.com/ekonomizer/normalize_go/handlers"
 	"fmt"
 	"encoding/json"
 	"strings"

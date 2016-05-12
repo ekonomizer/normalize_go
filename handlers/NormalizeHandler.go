@@ -6,7 +6,7 @@ import (
 	"strings"
 	"net/url"
 	"encoding/json"
-	"normalize_go/utils"
+	"github.com/ekonomizer/normalize_go/utils"
 )
 
 const GoogleApiKey = "AIzaSyBhOuB_Vzl34lQzuzGrD3OiNG-xyDJKElg"
