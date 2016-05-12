@@ -14,8 +14,12 @@ func ArrayIndexOfStr(arr []string, str string)(int) {
 	return -1
 }
 
+func WithLimit(body io.ReadCloser)(io.Reader) {
+	return &io.LimitedReader{body, READ_LIMIT_BYTES}
+}
+
 func ParseHttpResponse(body io.ReadCloser) (string, error) {
-	lr := &io.LimitedReader{body, READ_LIMIT_BYTES}
+	lr := WithLimit(body)
 	contents, err := ioutil.ReadAll(lr)
 	if err != nil {
 		return "", err

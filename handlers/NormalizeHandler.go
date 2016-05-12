@@ -67,7 +67,7 @@ func getGoogleApiAddress(urlStr string)(string, string) {
 
 	// Decode google api response string
 	response := &Response{}
-	errJson := json.NewDecoder(googleApiResponse.Body).Decode(&response)
+	errJson := json.NewDecoder(utils.WithLimit(googleApiResponse.Body)).Decode(&response)
 	if errJson != nil {
 		return "", "error when parse json address: " + errJson.Error()
 	}
