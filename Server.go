@@ -18,7 +18,7 @@ func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	http.HandleFunc("/address/normalize", HandleRequest(handlers.NormalizeHandlersQueue))
 
-	err := http.ListenAndServe(":12345", nil) // setting listening port
+	err := http.ListenAndServe(":5000", nil) // setting listening port
 	if err != nil {
 		fmt.Println("ListenAndServe: ", err)
 	}
