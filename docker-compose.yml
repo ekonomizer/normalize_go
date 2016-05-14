@@ -7,9 +7,9 @@ services:
     environment:
       - REPO=github.com/ekonomizer/normalize_go
       - SERVER_EXEC=/home/ekonomizer/gosrc/bin/normalize_go
-      - PORT=12345
+      - PORT=5000
     ports:
-      - "8880:12345"
+      - "8880:5000"
     expose:
       - "12345"
       - "123"
