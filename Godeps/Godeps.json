@@ -2,6 +2,9 @@
 	"ImportPath": "normalize_go",
 	"GoVersion": "go1.6",
 	"GodepVersion": "v67",
+    "Packages": [
+      "./..."
+    ],
 	"Deps": [
 		{
 			"ImportPath": "github.com/ekonomizer/normalize_go/handlers",
