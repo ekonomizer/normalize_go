@@ -1,0 +1,15 @@
+{
+	"ImportPath": "normalize_go",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v67",
+	"Deps": [
+		{
+			"ImportPath": "github.com/ekonomizer/normalize_go/handlers",
+			"Rev": "4e4444f1321bd3133002fed7ecb4b3c685fbd772"
+		},
+		{
+			"ImportPath": "github.com/ekonomizer/normalize_go/utils",
+			"Rev": "4e4444f1321bd3133002fed7ecb4b3c685fbd772"
+		}
+	]
+}
