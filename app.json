@@ -1,0 +1,12 @@
+{
+  "name": "normalize_go",
+  "description": "Go normalize",
+  "keywords": [
+    "normalize",
+    "go"
+  ],
+  "image": "heroku/go:1.6",
+  "mount_dir": "src/normalize_go",
+  "website": "https://github.com/ekonomizer/normalize_go",
+  "repository": "https://github.com/ekonomizer/normalize_go"
+}
